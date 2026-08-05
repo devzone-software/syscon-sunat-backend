@@ -8,23 +8,26 @@ router = APIRouter(
 
 @router.get("/")
 def listar_productos():
-    return [
-        {
-            "id": 1,
-            "nombre": "Cable UTP Cat 6",
-            "categoria": "Cableado",
-            "cantidad_vendida": 850
-        },
-        {
-            "id": 2,
-            "nombre": "Router TP-Link",
-            "categoria": "Redes",
-            "cantidad_vendida": 240
-        },
-        {
-            "id": 3,
-            "nombre": "Cámara IP",
-            "categoria": "Seguridad",
-            "cantidad_vendida": 185
-        }
-    ]
+    return {
+        "mensaje": "Lista de productos de SYSCON",
+        "productos": [
+            {
+                "id": 1,
+                "nombre": "Cable UTP Cat 6",
+                "categoria": "Cableado",
+                "precio": 2.50
+            },
+            {
+                "id": 2,
+                "nombre": "Router WiFi",
+                "categoria": "Redes",
+                "precio": 150.00
+            },
+            {
+                "id": 3,
+                "nombre": "Cámara IP",
+                "categoria": "Seguridad",
+                "precio": 220.00
+            }
+        ]
+    }

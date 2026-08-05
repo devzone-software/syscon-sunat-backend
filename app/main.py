@@ -1,17 +1,30 @@
 from fastapi import FastAPI
-from app.api.productos import router as productos_router
+from app.api import productos
 
 app = FastAPI(
-    title="SYSCON SUNAT API",
-    description="Sistema de gestión y análisis de ventas",
-    version="1.0.0"
+    title="SYSCON - Sistema de Gestión de Facturas",
+    description=(
+        "API para gestionar productos, facturas, boletas "
+        "y generar reportes de ventas."
+    ),
+    version="0.1.0"
 )
 
-app.include_router(productos_router)
+app.include_router(productos.router)
 
 
 @app.get("/")
 def inicio():
     return {
-        "mensaje": "Backend de SYSCON funcionando correctamente"
+        "sistema": "SYSCON",
+        "estado": "Activo",
+        "mensaje": "Backend funcionando correctamente"
+    }
+
+
+@app.get("/salud")
+def verificar_sistema():
+    return {
+        "estado": "OK",
+        "servicio": "API SYSCON"
     }
